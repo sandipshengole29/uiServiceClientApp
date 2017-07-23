@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<title>Wel-Come Application</title>
+
+<head>
+<meta charset="utf-8">
+
+<!-- CSS -->
+<link rel="stylesheet" href="css-lib/bootstrap.min.css">
+<link rel="stylesheet" href="css-lib/custom-css.css">
+<link rel="stylesheet" href="css-lib/font-awesome.css">
+
+<!-- JS -->
+<!-- load angular, nganimate, and ui-router -->
+<script src="js-lib/angular.min.js"></script>
+<script src="js-lib/angular-ui-router.min.js"></script>
+<script src="js-lib/angular-animate.min.js"></script>
+<script src="js-lib/angular-route.min.js"></script>
+<script src="js-lib/jquery-1.11.2.min.js"></script>
+<script src="js-lib/bootstrap.min.js"></script>
+
+<script src="custom-js/sidebar_menu.js"></script>
+
+<script src="app-js/app.js"></script>
+<script src="app-js/controller/LoginPageController.js"></script>
+<script src="app-js/controller/LandingPageController.js"></script>
+<script src="app-js/controller/NavigationController.js"></script>
+<script src="app-js/controller/XMLPocPageController.js"></script>
+
+<script src="app-js/factory/RestFactory.js"></script>
+
+<script src="app-js/service/XMLPocPageService.js"></script>
+
+<script src="app-js/service/AuthenticationService.js"></script>
+</head>
+
+<body ng-app="app">
+
+	<!-- views will be injected here -->
+	<div class="container" ng-show="!authenticated">
+		<div class="row"><div class="text-center" ng-include="'view-lib/common-pages/header.html'"></div></div>
+		<div class="well" ng-if="!authenticated"><ui-view></ui-view></div>
+	</div>
+
+	<!-- <div ng-show="authenticated">
+		<div class="text-center" ng-include="'view-lib/common-pages/header.html'"></div>
+		<div ng-include="'view-lib/common-pages/side-menu.html'" style="height: 400px;"></div>
+		<div><ui-view></ui-view></div>
+		<div class="text-center" ng-include="'view-lib/common-pages/footer.html'"></div>
+	</div> -->
+	
+	<div class="well" ng-show="authenticated">
+		<div class="row"><div class="text-center" ng-include="'view-lib/common-pages/header.html'"></div></div>
+	  	<div class="row">
+			<div class="container col-lg-3 well" ng-include="'view-lib/common-pages/side-menu.html'" style="width: 20%; height: 450px;"></div>
+			<div class="container col-lg-9 well" style="width: 79%;"><ui-view></ui-view></div>
+	  	</div>
+	  	<div class="row"><div class="text-center" ng-include="'view-lib/common-pages/footer.html'"></div></div>
+	</div>
+</body>
+
+</html>
